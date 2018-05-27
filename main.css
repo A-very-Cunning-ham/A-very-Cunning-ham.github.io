@@ -1,0 +1,54 @@
+body {
+    text-align: center
+}
+#title {
+    margin-top: 14vh;
+    margin-bottom: 14vh;
+}
+button{
+  margin      : 0;
+  padding     : 0;
+  border      : 0;
+  background  : grey;
+  font-family : inherit;
+  font-size   : 1em;
+  cursor      : pointer;
+}
+
+button::-moz-focus-inner{
+  padding : 0;
+  border  : 0;
+}
+.row {
+    margin-bottom: 1vh;
+}
+
+.switch input {display:none;}
+
+.switch {
+  position: relative;
+  width: 18vw;
+  height: 8vh;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+#start-text {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
