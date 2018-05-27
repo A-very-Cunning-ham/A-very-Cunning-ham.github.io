@@ -5,6 +5,7 @@
     <title>Psych Battle</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="main.css">
     <script src="main.js"></script>
 </head>
@@ -13,61 +14,55 @@
        <div class="row" id="title"><h1>Psych Game</h1></div>
        <div class="row">
            <div class="col-sm-3">
-               <label class="switch"><input type="checkbox" id="check0" onclick="enable_categs(0)"><span class="slider"></span></label>
+               <label class="switch"><input type="checkbox" id="check0" onclick="toggleCategs(0)"><span class="slider">Unit 1</span></label>
            </div>
            <div class="col-sm-3">
-               <label class="switch"><input type="checkbox" id="check1" onclick="enable_categs(1)"><span class="slider"></span></label>
+               <label class="switch"><input type="checkbox" id="check1" onclick="toggleCategs(1)"><span class="slider">Unit 2</span></label>
            </div>
            <div class="col-sm-3">
-               <label class="switch"><input type="checkbox" id="check2" onclick="enable_categs(2)"><span class="slider"></span></label>
+               <label class="switch"><input type="checkbox" id="check2" onclick="toggleCategs(2)"><span class="slider">Unit 3</span></label>
            </div>
            <div class="col-sm-3">
-               <label class="switch"><input type="checkbox" id="check3" onclick="enable_categs(3)"><span class="slider"></span></label>
+               <label class="switch"><input type="checkbox" id="check3" onclick="toggleCategs(3)"><span class="slider">Unit 4</span></label>
            </div>       
        </div>
        <div class="row">
            <div class="col-sm-3">
-               <label class="switch"><input type="checkbox" id="check4" onclick="enable_categs(4)"><span class="slider"></span></label>
+               <label class="switch"><input type="checkbox" id="check4" onclick="toggleCategs(4)"><span class="slider">Unit 5</span></label>
            </div>
            <div class="col-sm-3">
-               <label class="switch"><input type="checkbox" id="check5" onclick="enable_categs(5)"><span class="slider"></span></label>
+               <label class="switch"><input type="checkbox" id="check5" onclick="toggleCategs(5)"><span class="slider">Unit 6</span></label>
            </div>
            <div class="col-sm-3">
-               <label class="switch"><input type="checkbox" id="check6" onclick="enable_categs(6)"><span class="slider"></span></label>
+               <label class="switch"><input type="checkbox" id="check6" onclick="toggleCategs(6)"><span class="slider">Unit 7</span></label>
            </div>
            <div class="col-sm-3">
-               <label class="switch"><input type="checkbox" id="check7" onclick="enable_categs(7)"><span class="slider"></span></label>
+               <label class="switch"><input type="checkbox" id="check7" onclick="toggleCategs(7)"><span class="slider">Unit 8</span></label>
            </div>       
        </div>
        <div class="row">
            <div class="col-sm-3">
-               <label class="switch"><input type="checkbox" id="check8" onclick="enable_categs(8)"><span class="slider"></span></label>
+               <label class="switch"><input type="checkbox" id="check8" onclick="toggleCategs(8)"><span class="slider">Unit 9</span></label>
            </div>
            <div class="col-sm-3">
-               <label class="switch"><input type="checkbox" id="check9" onclick="enable_categs(9)"><span class="slider"></span></label>
+               <label class="switch"><input type="checkbox" id="check9" onclick="toggleCategs(9)"><span class="slider">Unit 10</span></label>
            </div>
            <div class="col-sm-3">
-               <label class="switch"><input type="checkbox" id="check10" onclick="enable_categs(10)"><span class="slider"></span></label>
+               <label class="switch"><input type="checkbox" id="check10" onclick="toggleCategs(10)"><span class="slider">Unit 11</span></label>
            </div>
            <div class="col-sm-3">
-               <label class="switch"><input type="checkbox" id="check11" onclick="enable_categs(11)"><span class="slider"></span></label>
+               <label class="switch"><input type="checkbox" id="check11" onclick="toggleCategs(11)"><span class="slider">Unit 12</span></label>
            </div>       
        </div>
         <div class="row">
-           <div class="col-sm-3">
-               <label class="switch"><input type="checkbox" id="check12" onclick="enable_categs(12)"><span class="slider"></span></label>
+           <div class="col-sm-6">
+               <label class="switch"><input type="checkbox" id="check12" onclick="toggleCategs(12)"><span class="slider">Unit 13</span></label>
            </div>
-           <div class="col-sm-3">
-               <label class="switch"><input type="checkbox" id="check13" onclick="enable_categs(13)"><span class="slider"></span></label>
-           </div>
-           <div class="col-sm-3">
-               <label class="switch"><input type="checkbox" id="check14" onclick="enable_categs(14)"><span class="slider"></span></label>
-           </div>
-           <div class="col-sm-3">
-               <label class="switch"><input type="checkbox" id="check15" onclick="enable_categs(15)"><span class="slider"></span></label>
-           </div>       
+           <div class="col-sm-6">
+               <label class="switch"><input type="checkbox" id="check13" onclick="toggleCategs(13)"><span class="slider">Unit 14</span></label>       
+        </div>
        </div>
-       <div class="row"><button><h4 id="start-text"><a href="game.html">Start</a></h4></button></div>
+       <div class="row"><h4><a href="game/game.html">Start</a></h4></div>
    </div>
 </body>
 </html>
