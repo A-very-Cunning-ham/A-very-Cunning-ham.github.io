@@ -93,8 +93,9 @@ $(document).ready(function(){
         $(this).html("<p class=buttonText>YOU CLICKED ME</p>");
     });
     $("#startButton").click(function(){
-      nextQuestion()
-      startTimer()
+      assignAnswers(count, unit1);
+      nextQuestion();
+      startTimer();
     });
     $(document).on("keypress", function (e) {
         if (e.which === 113) {
@@ -121,6 +122,31 @@ function nextQuestion(){
   count++;
 }
 
+function assignAnswers (count, cat) {
+    let n = Math.floor(Math.random() * 4); //Returns a random number between 0 and 3
+    if (n === 0) {
+        document.getElementById('answer_a').innerHTML = cat[count][0];
+    } else {
+        document.getElementById('answer_a').innerHTML = cat[Math.floor(Math.random() * cat.length)][0];
+    }
+    if (n === 1) {
+        document.getElementById('answer_b').innerHTML = cat[count][0];
+    } else {
+        document.getElementById('answer_b').innerHTML = cat[Math.floor(Math.random() * cat.length)][0];
+    }
+    if (n === 2) {
+        document.getElementById('answer_c').innerHTML = cat[count][0];
+    } else {
+        document.getElementById('answer_c').innerHTML = cat[Math.floor(Math.random() * cat.length)][0];
+    }
+    if (n === 3) {
+        document.getElementById('answer_d').innerHTML = cat[count][0];
+    } else {
+        document.getElementById('answer_d').innerHTML = cat[Math.floor(Math.random() * cat.length)][0];
+    }
+}
+    
+    
 </script>
 </head>
 <body style="background-color:#D5C5C8;">
@@ -153,10 +179,10 @@ function nextQuestion(){
 <!-- <div id="square" style="background:#98bf21;height:100px;width:100px;position:absolute;"></div>
 <div id="square2" style="background:#213bbf;height:100px;width:100px;left:300px;position:absolute;"><p class=buttonText>This is a paragraph.</p></div> -->
 <div class="center">
-<div class=button id="a" style="background:#75B9BE;"><p class=buttonText>A</p></div>
-<div class=button id="b" style="background:#8BBF9F;"><p class=buttonText>B</p></div>
-<div class=button id="c" style="background:#DB7F8E;"><p class=buttonText>C</p></div>
-<div class=button id="d" style="background:#FFFD98;"><p class=buttonText>D</p></div>
+<div class=button id="answer_a" style="background:#75B9BE;"><p class=buttonText>A</p></div>
+<div class=button id="answer_b" style="background:#8BBF9F;"><p class=buttonText>B</p></div>
+<div class=button id="answer_c" style="background:#DB7F8E;"><p class=buttonText>C</p></div>
+<div class=button id="answer_d" style="background:#FFFD98;"><p class=buttonText>D</p></div>
 
 </div>
 
