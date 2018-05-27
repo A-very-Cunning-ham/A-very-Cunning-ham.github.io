@@ -117,9 +117,41 @@ function startTimer(){
     $("#timer").animate({width:'0px'}, time*1000);
 }
 function nextQuestion(){
+
+  var questions = [unit1[count][0],
+  unit1[(generateRandom(0, unit1.length, count))],
+  unit1[(generateRandom(0, unit1.length, count))], //this needs more work to prevent duplicates
+  unit1[(generateRandom(0, unit1.length, count))]];
+
+  questions = shuffle(questions);
   $("#currentQuestion").html(unit1[count][1]);
+  $("#answer1").html(questions[0]);
+  $("#answer2").html(questions[1]);
+  $("#answer3").html(questions[2]);
+  $("#answer4").html(questions[3]);
   count++;
 }
+
+function shuffle(array) {
+    var i = array.length,
+        j = 0,
+        temp;
+
+    while (i--) {
+        j = Math.floor(Math.random() * (i+1));
+        temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
+}
+
+function generateRandom(min, max, i) {
+    var num = Math.floor(Math.random() * (max - min + 1)) + min;
+    return (num === i) ? generateRandom(min, max, i) : num;
+}
+
+
 
 </script>
 </head>
@@ -131,7 +163,6 @@ function nextQuestion(){
 <button id="startButton">Start Game</button>
 </div>
 
-<!-- <div class=button style="background:#75B9BE; height:10px; width:100px"><p>A</p></div> -->
 
 <div class="center">
 <h3 id="currentQuestion">Click Start to Begin</h3>
@@ -139,10 +170,10 @@ function nextQuestion(){
 
 <div class="center">
 <ol type="A">
-  <li>Answer</li>
-  <li>Answer</li>
-  <li>Answer</li>
-  <li>Answer</li>
+  <li id="answer1">Answer</li>
+  <li id="answer2">Answer</li>
+  <li id="answer3">Answer</li>
+  <li id="answer4">Answer</li>
 </ol>
 </div>
 
@@ -150,8 +181,6 @@ function nextQuestion(){
   <div id="timer"></div>
 </div>
 
-<!-- <div id="square" style="background:#98bf21;height:100px;width:100px;position:absolute;"></div>
-<div id="square2" style="background:#213bbf;height:100px;width:100px;left:300px;position:absolute;"><p class=buttonText>This is a paragraph.</p></div> -->
 <div class="center">
 <div class=button id="a" style="background:#75B9BE;"><p class=buttonText>A</p></div>
 <div class=button id="b" style="background:#8BBF9F;"><p class=buttonText>B</p></div>
