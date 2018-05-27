@@ -118,17 +118,17 @@ function startTimer(){
 }
 function nextQuestion(){
 
-  var questions = [unit1[count][0],
-  unit1[(generateRandom(0, unit1.length, count))],
-  unit1[(generateRandom(0, unit1.length, count))], //this needs more work to prevent duplicates
-  unit1[(generateRandom(0, unit1.length, count))]];
+  var answers = [unit1[count][0],
+  unit1[(generateRandom(0, unit1.length, count))][0],
+  unit1[(generateRandom(0, unit1.length, count))][0], //this needs more work to prevent duplicates
+  unit1[(generateRandom(0, unit1.length, count))][0]];
 
-  questions = shuffle(questions);
+  answers = shuffle(answers);
   $("#currentQuestion").html(unit1[count][1]);
-  $("#answer1").html(questions[0]);
-  $("#answer2").html(questions[1]);
-  $("#answer3").html(questions[2]);
-  $("#answer4").html(questions[3]);
+  $("#answer1").html(answers[0]);
+  $("#answer2").html(answers[1]);
+  $("#answer3").html(answers[2]);
+  $("#answer4").html(answers[3]);
   count++;
 }
 
