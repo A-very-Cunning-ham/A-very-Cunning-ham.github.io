@@ -75,7 +75,21 @@ function stringTo2dArray(string, d1, d2) {
 }
 
 var res = stringTo2dArray(s, "\r\n", "\t");
+  var categs = JSON.parse(sessionStorage.categs)
 
+    
+ function joinCategs (categs) {
+     let array = [];
+     let i = 0;
+     for (i=0;i < categs.length; i++) {
+         if (categs[i]) {
+             array = array.concat(units[i]);
+         }
+     }
+     return array;
+ }
+ console.log(joinCategs(categs));
+    
 $(document).ready(function(){
     // $("button").click(function(){
     //     var div = $("div.button");
@@ -185,7 +199,7 @@ function generateRandom(min, max, i) {
 </head>
 <body style="background-color:#D5C5C8;">
 
-<h1 align="center" >PsychBattle</h1>
+<h1 align="center" ><a href="index.html">PsychBattle</a></h1>
 
 <div class="center">
 <button id="startButton">Start Game</button>
