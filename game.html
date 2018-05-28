@@ -76,7 +76,21 @@ function stringTo2dArray(string, d1, d2) {
 }
 
 var res = stringTo2dArray(s, "\r\n", "\t");
+  var categs = JSON.parse(sessionStorage.categs)
 
+    
+ function joinCategs (categs) {
+     let array = [];
+     let i = 0;
+     for (i=0;i < categs.length; i++) {
+         if (categs[i]) {
+             array = array.concat(units[i]);
+         }
+     }
+     return array;
+ }
+var currentCategs = joinCategs(categs);
+    
 $(document).ready(function(){
     // $("button").click(function(){
     //     var div = $("div.button");
@@ -135,18 +149,21 @@ function startTimer(){
 
 }
 function nextQuestion(){
-  answers = [unit1[count][0],
-  unit1[(generateRandom(0, unit1.length, count))][0],
-  unit1[(generateRandom(0, unit1.length, count))][0], //this needs more work to prevent duplicates
-  unit1[(generateRandom(0, unit1.length, count))][0]];
+  answers = [currentCategs[count][0],
+  currentCategs[(generateRandom(0, currentCategs.length, count))][0],
+  currentCategs[(generateRandom(0, currentCategs.length, count))][0], //this needs more work to prevent duplicates
+  currentCategs[(generateRandom(0, currentCategs.length, count))][0]];
+
   answers = shuffle(answers);
-  $("#currentQuestion").html(unit1[count][1]);
+  
+  $("#currentQuestion").html(currentCategs[count][1]);
   $("#answer1").html(answers[0]);
   $("#answer2").html(answers[1]);
   $("#answer3").html(answers[2]);
   $("#answer4").html(answers[3]);
   count++;
 }
+
 
 function shuffle(array) {
     var i = array.length,
@@ -169,10 +186,10 @@ function generateRandom(min, max, i) {
 
 function checkAnswer(ans, id){
   console.log(ans);
-  console.log(unit1[count-1][0]);
+  console.log(currentCategs[count-1][0]);
 
   // console.log(id);
-    if(ans === unit1[count-1][0]){
+    if(ans === currentCategs[count-1][0]){
     incrementScore(id);
     // return true;
   }else{
@@ -193,11 +210,38 @@ function resetBoard(){
 
 
 
+
+// function assignAnswers (count, cat) {
+//     let n = Math.floor(Math.random() * 4); //Returns a random number between 0 and 3
+//     if (n === 0) {
+//         document.getElementById('answer_a').innerHTML = cat[count][0];
+//     } else {
+//         document.getElementById('answer_a').innerHTML = cat[Math.floor(Math.random() * cat.length)][0];
+//     }
+//     if (n === 1) {
+//         document.getElementById('answer_b').innerHTML = cat[count][0];
+//     } else {
+//         document.getElementById('answer_b').innerHTML = cat[Math.floor(Math.random() * cat.length)][0];
+//     }
+//     if (n === 2) {
+//         document.getElementById('answer_c').innerHTML = cat[count][0];
+//     } else {
+//         document.getElementById('answer_c').innerHTML = cat[Math.floor(Math.random() * cat.length)][0];
+//     }
+//     if (n === 3) {
+//         document.getElementById('answer_d').innerHTML = cat[count][0];
+//     } else {
+//         document.getElementById('answer_d').innerHTML = cat[Math.floor(Math.random() * cat.length)][0];
+//     }
+// }
+
+
+
 </script>
 </head>
 <body style="background-color:#D5C5C8;">
 
-<h1 align="center" >PsychBattle</h1>
+<h1 align="center" ><a href="index.html">PsychBattle</a></h1>
 
 <h3 align="center" id="score" >Score:</h1>
 
@@ -224,10 +268,12 @@ function resetBoard(){
 </div>
 
 <div class="center">
+
 <div class=button id="buttonA" style="background:#75B9BE;"><p class=buttonText>A</p></div>
 <div class=button id="buttonB" style="background:#8BBF9F;"><p class=buttonText>B</p></div>
 <div class=button id="buttonC" style="background:#DB7F8E;"><p class=buttonText>C</p></div>
 <div class=button id="buttonD" style="background:#FFFD98;"><p class=buttonText>D</p></div>
+
 
 </div>
 
