@@ -1,4 +1,4 @@
-var categs =  [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+var categs =  [false, false, false, false, false, false, false, false, false, false, false, false, false, false,];
 
 
 function toggleCategs(n) {
@@ -6,10 +6,11 @@ function toggleCategs(n) {
     
     if (checkbox.checked === true) {
         categs[n] = true;
-        sessionStorage.categs = categs;
+        sessionStorage.categs = JSON.stringify(categs);
     } else {
         categs[n] = false;
-        sessionStorage.categs = categs;
+        sessionStorage.categs = JSON.stringify(categs);
     }
+    
 }
 
