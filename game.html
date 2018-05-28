@@ -91,6 +91,55 @@ var res = stringTo2dArray(s, "\r\n", "\t");
  }
 var currentCategs = joinCategs(categs);
     
+
+function randomQA (array, n) {
+    let x = array[(generateRandom(0, array.length-1, n[0]))]
+    if (checkDupes (x, n) === true) {
+        return randomQA(array, n);
+    } else {
+        return x
+    }
+}
+
+function checkDupes (a, as) {
+    for (i=0;i<=as.length; i++) {
+        if (a === as[i]) {
+            return true;
+        }
+    }
+}
+    
+var doneQuestions = [-1];
+function nextQuestion(){
+  if (doneQuestions.length-1 === currentCategs.length) {
+      $("#currentQuestion").html("All questions used");
+      return 0;
+  }
+  currentQuestion = randomQA(currentCategs, doneQuestions);
+  let exc = [currentQuestion]; //Temp array of excluded values
+  let a1 = randomQA(currentCategs, exc);
+  exc = [currentQuestion, a1];
+  let a2 = randomQA(currentCategs, exc);
+  exc = [currentQuestion, a1, a2];
+  let a3 = randomQA(currentCategs, exc);
+
+  answers = [currentQuestion[0],a1[0],a2[0],a3[0]];
+
+  answers = shuffle(answers);
+  $("#currentQuestion").html(currentQuestion[1]);
+  $("#answer1").html(answers[0]);
+  $("#answer2").html(answers[1]);
+  $("#answer3").html(answers[2]);
+  $("#answer4").html(answers[3]);
+  doneQuestions.push(currentQuestion);
+}
+    
+    
+    
+    
+    
+    
+
 $(document).ready(function(){
     // $("button").click(function(){
     //     var div = $("div.button");
@@ -148,48 +197,7 @@ function startTimer(){
     });
 
 }
-    
 
-function randomQA (array, n) {
-    let x = array[(generateRandom(0, array.length-1, n[0]))]
-    if (checkDupes (x, n) === true) {
-        return randomQA(array, n);
-    } else {
-        return x
-    }
-}
-
-function checkDupes (a, as) {
-    for (i=0;i<=as.length; i++) {
-        if (a === as[i]) {
-            return true;
-        }
-    }
-}
-var doneQuestions = [-1];
-function nextQuestion(){
-  if (doneQuestions.length-1 === currentCategs.length) {
-      $("#currentQuestion").html("All questions used");
-      return 0;
-  }
-  currentQuestion = randomQA(currentCategs, doneQuestions);
-  let exc = [currentQuestion]; //Temp array of excluded values
-  let a1 = randomQA(currentCategs, exc);
-  exc = [currentQuestion, a1];
-  let a2 = randomQA(currentCategs, exc);
-  exc = [currentQuestion, a1, a2];
-  let a3 = randomQA(currentCategs, exc);
-
-  var answers = [currentQuestion[0],a1[0],a2[0],a3[0]];
-
-  answers = shuffle(answers);
-  $("#currentQuestion").html(currentQuestion[1]);
-  $("#answer1").html(answers[0]);
-  $("#answer2").html(answers[1]);
-  $("#answer3").html(answers[2]);
-  $("#answer4").html(answers[3]);
-  doneQuestions.push(currentQuestion);
-}
 
 
 function shuffle(array) {
@@ -213,10 +221,10 @@ function generateRandom(min, max, i) {
 
 function checkAnswer(ans, id){
   console.log(ans);
-  console.log(currentCategs[count-1][0]);
+  console.log(currentQuestion[0]);
 
   // console.log(id);
-    if(ans === currentCategs[count-1][0]){
+    if(ans === currentQuestion[0]){
     incrementScore(id);
     // return true;
   }else{
