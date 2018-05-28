@@ -62,6 +62,7 @@ p.buttonText{
 var time = 10; //in seconds
 
 var count = 0;
+var score = 0;
 var questionArray = ["a question","another question"]
 var answerArray = [["answer1", "answer2", "answer3", "answer4"],]
 var correctAnswers = ["correct answer"]
@@ -89,16 +90,16 @@ $(document).ready(function(){
         $("div.button").hide();
     });
 
-    $(".button").click(function(){
-        $(this).html("<p class=buttonText>YOU CLICKED ME</p>");
-    });
+    // $(".button").click(function(){
+    //     $(this).html("<p class=buttonText>YOU CLICKED ME</p>");
+    // });
     $("#startButton").click(function(){
-      nextQuestion()
-      startTimer()
+      nextQuestion();
+      startTimer();
     });
     $(document).on("keypress", function (e) {
         if (e.which === 113) {
-            console.log("answer1");
+
         }
         if (e.which === 119) {
             console.log("answer2");
@@ -111,24 +112,39 @@ $(document).ready(function(){
         }
     });
 
+    $("#buttonA").click(function(){
+        checkAnswer(answers[0], this);
+    });
+    $("#buttonB").click(function(){
+        checkAnswer(answers[1], this);
+    });
+    $("#buttonC").click(function(){
+        checkAnswer(answers[2], this);
+    });
+    $("#buttonD").click(function(){
+        checkAnswer(answers[3], this);
+    });
+
+
 });
 
 function startTimer(){
-    $("#timer").animate({width:'0px'}, time*1000);
+    $("#timer").animate({width:'0px'}, time*1000, function(){
+      resetBoard();
+    });
+
 }
 function nextQuestion(){
-
-  var questions = [unit1[count][0],
-  unit1[(generateRandom(0, unit1.length, count))],
-  unit1[(generateRandom(0, unit1.length, count))], //this needs more work to prevent duplicates
-  unit1[(generateRandom(0, unit1.length, count))]];
-
-  questions = shuffle(questions);
+  answers = [unit1[count][0],
+  unit1[(generateRandom(0, unit1.length, count))][0],
+  unit1[(generateRandom(0, unit1.length, count))][0], //this needs more work to prevent duplicates
+  unit1[(generateRandom(0, unit1.length, count))][0]];
+  answers = shuffle(answers);
   $("#currentQuestion").html(unit1[count][1]);
-  $("#answer1").html(questions[0]);
-  $("#answer2").html(questions[1]);
-  $("#answer3").html(questions[2]);
-  $("#answer4").html(questions[3]);
+  $("#answer1").html(answers[0]);
+  $("#answer2").html(answers[1]);
+  $("#answer3").html(answers[2]);
+  $("#answer4").html(answers[3]);
   count++;
 }
 
@@ -151,6 +167,30 @@ function generateRandom(min, max, i) {
     return (num === i) ? generateRandom(min, max, i) : num;
 }
 
+function checkAnswer(ans, id){
+  console.log(ans);
+  console.log(unit1[count-1][0]);
+
+  // console.log(id);
+    if(ans === unit1[count-1][0]){
+    incrementScore(id);
+    // return true;
+  }else{
+    $(id).html("<p class=buttonText>Incorrect</p>");
+    // return false;
+  }
+}
+
+function incrementScore(id){
+      $(id).html("<p class=buttonText>Correct</p>");
+      score++;
+      $("#score").html("Score: "+score);
+}
+
+function resetBoard(){
+  $("#timer").removeAttr('style');;
+}
+
 
 
 </script>
@@ -158,6 +198,8 @@ function generateRandom(min, max, i) {
 <body style="background-color:#D5C5C8;">
 
 <h1 align="center" >PsychBattle</h1>
+
+<h3 align="center" id="score" >Score:</h1>
 
 <div class="center">
 <button id="startButton">Start Game</button>
@@ -182,10 +224,10 @@ function generateRandom(min, max, i) {
 </div>
 
 <div class="center">
-<div class=button id="a" style="background:#75B9BE;"><p class=buttonText>A</p></div>
-<div class=button id="b" style="background:#8BBF9F;"><p class=buttonText>B</p></div>
-<div class=button id="c" style="background:#DB7F8E;"><p class=buttonText>C</p></div>
-<div class=button id="d" style="background:#FFFD98;"><p class=buttonText>D</p></div>
+<div class=button id="buttonA" style="background:#75B9BE;"><p class=buttonText>A</p></div>
+<div class=button id="buttonB" style="background:#8BBF9F;"><p class=buttonText>B</p></div>
+<div class=button id="buttonC" style="background:#DB7F8E;"><p class=buttonText>C</p></div>
+<div class=button id="buttonD" style="background:#FFFD98;"><p class=buttonText>D</p></div>
 
 </div>
 
