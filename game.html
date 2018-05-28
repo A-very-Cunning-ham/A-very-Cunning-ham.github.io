@@ -88,7 +88,7 @@ var res = stringTo2dArray(s, "\r\n", "\t");
      }
      return array;
  }
- console.log(joinCategs(categs));
+var currentCategs = joinCategs(categs);
     
 $(document).ready(function(){
     // $("button").click(function(){
@@ -132,13 +132,13 @@ function startTimer(){
 }
 function nextQuestion(){
 
-  var answers = [unit1[count][0],
-  unit1[(generateRandom(0, unit1.length, count))][0],
-  unit1[(generateRandom(0, unit1.length, count))][0], //this needs more work to prevent duplicates
-  unit1[(generateRandom(0, unit1.length, count))][0]];
+  var answers = [currentCategs[count][0],
+  currentCategs[(generateRandom(0, currentCategs.length, count))][0],
+  currentCategs[(generateRandom(0, currentCategs.length, count))][0], //this needs more work to prevent duplicates
+  currentCategs[(generateRandom(0, currentCategs.length, count))][0]];
 
   answers = shuffle(answers);
-  $("#currentQuestion").html(unit1[count][1]);
+  $("#currentQuestion").html(currentCategs[count][1]);
   $("#answer1").html(answers[0]);
   $("#answer2").html(answers[1]);
   $("#answer3").html(answers[2]);
