@@ -111,6 +111,7 @@ function checkDupes (a, as) {
     
 var doneQuestions = [-1];
 function nextQuestion(){
+  answered = false;
   resetBoard();
   startTimer();
   if (doneQuestions.length-1 === currentCategs.length) {
@@ -220,13 +221,18 @@ function generateRandom(min, max, i) {
     return (num === i[0]) ? generateRandom(min, max, i) : num;
 }
 
+var answered = false;    
+
 function checkAnswer(ans, id){
   console.log(ans);
   console.log(currentQuestion[0]);
-
+    if (answered === true) {
+        return 0;
+    };
   // console.log(id);
     if(ans === currentQuestion[0]){
     incrementScore(id);
+    answered = true;
     setTimeout(function () {
         nextQuestion();
     }, 5000);
