@@ -227,6 +227,10 @@ function checkAnswer(ans, id){
   // console.log(id);
     if(ans === currentQuestion[0]){
     incrementScore(id);
+    setTimeout(function () {
+        nextQuestion();
+    }, 5000);
+
     // return true;
   }else{
     $(id).html("<p class=buttonText>Incorrect</p>");
