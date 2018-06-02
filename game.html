@@ -111,6 +111,8 @@ function checkDupes (a, as) {
     
 var doneQuestions = [-1];
 function nextQuestion(){
+  resetBoard();
+  startTimer();
   if (doneQuestions.length-1 === currentCategs.length) {
       $("#currentQuestion").html("All questions used");
       return 0;
@@ -158,7 +160,6 @@ $(document).ready(function(){
     // });
     $("#startButton").click(function(){
       nextQuestion();
-      startTimer();
     });
     $(document).on("keypress", function (e) {
         if (e.which === 113) {
@@ -193,7 +194,7 @@ $(document).ready(function(){
 
 function startTimer(){
     $("#timer").animate({width:'0px'}, time*1000, function(){
-      resetBoard();
+      nextQuestion();
     });
 
 }
