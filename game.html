@@ -111,6 +111,7 @@ function checkDupes (a, as) {
     
 var doneQuestions = [-1];
 function nextQuestion(){
+  $("#correct_answer").html("");
   answered = false;
   resetBoard();
   startTimer();
@@ -197,6 +198,7 @@ $(document).ready(function(){
 function startTimer(){
     $("#timer").finish().css('width','200px');
     $("#timer").animate({width:'0px'}, time*1000, function(){
+    $("#correct_answer").html(currentQuestion[0]);
     doneQuestions.splice(-1,1);
     setTimeout(function () {
         nextQuestion();
@@ -320,7 +322,6 @@ function resetBoard(){
   <li id="answer4">Answer</li>
 </ol>
 </div>
-
 <div id="timerParent">
   <div id="timer"></div>
 </div>
@@ -332,6 +333,7 @@ function resetBoard(){
 <div class=button id="buttonC" style="background:#DB7F8E;"><p class=buttonText>C</p></div>
 <div class=button id="buttonD" style="background:#FFFD98;"><p class=buttonText>D</p></div>
 
+<p id="correct_answer" style="text-align: center"></p>
 
 </div>
 
