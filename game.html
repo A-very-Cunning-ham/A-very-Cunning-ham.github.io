@@ -200,7 +200,9 @@ function startTimer(){
 
 }
 
-
+function stopTimer(){
+    $("#timer").stop(true);
+}
 
 function shuffle(array) {
     var i = array.length,
@@ -233,6 +235,7 @@ function checkAnswer(ans, id){
     if(ans === currentQuestion[0]){
     incrementScore(id);
     answered = true;
+    stopTimer();
     setTimeout(function () {
         nextQuestion();
     }, 5000);
