@@ -195,6 +195,7 @@ $(document).ready(function(){
 function startTimer(){
     $("#timer").finish().css('width','200px');
     $("#timer").animate({width:'0px'}, time*1000, function(){
+    doneQuestions.splice(-1,1);
     setTimeout(function () {
         nextQuestion();
     }, 5000);
