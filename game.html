@@ -164,7 +164,6 @@ $(document).ready(function(){
     });
     $(document).on("keypress", function (e) {
         if (e.which === 113) {
-
         }
         if (e.which === 119) {
             console.log("answer2");
@@ -194,6 +193,7 @@ $(document).ready(function(){
 });
 
 function startTimer(){
+    $("#timer").finish().css('width','200px');
     $("#timer").animate({width:'0px'}, time*1000, function(){
       nextQuestion();
     });
