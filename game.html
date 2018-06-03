@@ -162,17 +162,19 @@ $(document).ready(function(){
     $("#startButton").click(function(){
       nextQuestion();
     });
+    
     $(document).on("keypress", function (e) {
         if (e.which === 113) {
+            checkAnswer(answers[0], "#buttonA");
         }
         if (e.which === 119) {
-            console.log("answer2");
+            checkAnswer(answers[1], "#buttonB");
         }
         if (e.which === 101) {
-            console.log("answer3");
+            checkAnswer(answers[2], "#buttonC");
         }
         if (e.which === 114) {
-            console.log("answer4")
+            checkAnswer(answers[3], "#buttonD");
         }
     });
 
