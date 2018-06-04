@@ -200,9 +200,6 @@ function startTimer(){
     $("#timer").animate({width:'0px'}, time*1000, function(){
     $("#correct_answer").html("Correct Answer: "+currentQuestion[0]);
     doneQuestions.splice(-1,1);
-    setTimeout(function () {
-        nextQuestion();
-    }, 5000);
     });
 
 }
@@ -243,18 +240,12 @@ function checkAnswer(ans, id){
     incrementScore(id);
     answered = true;
     stopTimer();
-    setTimeout(function () {
-        nextQuestion();
-    }, 5000);
-
     // return true;
   }else{
     $(id).html("<p class=buttonText>Incorrect</p>");
     stopTimer();
+    answered = true;
     $("#correct_answer").html("Correct Answer: "+currentQuestion[0]);
-    setTimeout(function () {
-        nextQuestion();
-    }, 5000);
     // return false;
   }
 }
