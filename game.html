@@ -84,6 +84,8 @@ function nextQuestion(){
   $("#answer3").html(answers[2]);
   $("#answer4").html(answers[3]);
   doneQuestions.push(currentQuestion);
+  $("#qs_left").html("Questions Remaining: "+((currentCategs.length)-(doneQuestions.length)+1));
+
 }
     
     
@@ -249,7 +251,7 @@ function resetBoard(){
 <h1 align="center" ><a href="index.html">PsychBattle</a></h1>
 
 <h3 align="center" id="score" >Score:</h1>
-
+<h4 id="qs_left">Questions Remaining: </h4>
 <div class="center">
 <button id="startButton">Start Game</button>
 </div>
