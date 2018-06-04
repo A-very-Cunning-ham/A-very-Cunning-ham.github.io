@@ -250,6 +250,11 @@ function checkAnswer(ans, id){
     // return true;
   }else{
     $(id).html("<p class=buttonText>Incorrect</p>");
+    stopTimer();
+    $("#correct_answer").html("Correct Answer: "+currentQuestion[0]);
+    setTimeout(function () {
+        nextQuestion();
+    }, 5000);
     // return false;
   }
 }
