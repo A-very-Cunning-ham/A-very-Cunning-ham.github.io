@@ -76,6 +76,7 @@ function nextQuestion(){
   $("#answer3").html(answers[2]);
   $("#answer4").html(answers[3]);
   doneQuestions.push(currentQuestion);
+  count++;
   $("#qs_left").html("Questions Remaining: "+((currentCategs.length)-(doneQuestions.length)+1));
 }
     
@@ -190,6 +191,11 @@ function checkAnswer(ans, id){
     $("#correct_answer").html("Correct Answer: "+currentQuestion[0]);
     // return false;
   }
+  let pc = (Math.floor((score/count)*100))
+  if (pc === Infinity) {
+      let pc = 0;
+  }
+  $("#percent_right").html("Percent Right: " + pc +"%");
 }
 
 function incrementScore(id){
