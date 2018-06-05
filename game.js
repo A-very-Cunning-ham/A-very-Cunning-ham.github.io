@@ -3,22 +3,10 @@ var time = 10; //in seconds
 
 var count = 0;
 var score = 0;
-var questionArray = ["a question","another question"]
-var answerArray = [["answer1", "answer2", "answer3", "answer4"],]
-var correctAnswers = ["correct answer"]
 
-var s = "psychological disorder\tdeviant, distressful, and dysfunctional patterns of thoughts, feelings, or behaviors.\r\nAttention-Deficit Hyperactivity Disorder (ADHD)\ta psychological disorder marked by the appearance by age 7 of one or more of three key symptoms extreme inattention, hyperactivity, and impulsivity.\r\nmedical model\tthe concept that diseases, in this case psychological disorders, have physical causes that can be diagnosed, treated, and, in most cases, cured, often through treatment in a hospital.\r\nDSM-V\tthe American Psychiatric Association\'s Diagnostic and Statistical Manual of Mental Disorders, a widely used system for classifying psychological disorders"
+var categs = JSON.parse(sessionStorage.categs)
 
 
-
-function stringTo2dArray(string, d1, d2) {
-	return string.split(d1).map(function(x){return x.split(d2)});
-}
-
-var res = stringTo2dArray(s, "\r\n", "\t");
-  var categs = JSON.parse(sessionStorage.categs)
-
-    
  function joinCategs (categs) {
      let array = [];
      let i = 0;
@@ -30,7 +18,7 @@ var res = stringTo2dArray(s, "\r\n", "\t");
      return array;
  }
 var currentCategs = joinCategs(categs);
-    
+
 
 function randomQA (array, n) {
     let x = array[(generateRandom(0, array.length-1, n[0]))]
@@ -48,7 +36,7 @@ function checkDupes (a, as) {
         }
     }
 }
-    
+
 var doneQuestions = [-1];
 function nextQuestion(){
   $("#correct_answer").html("");
@@ -79,34 +67,19 @@ function nextQuestion(){
   count++;
   $("#qs_left").html("Questions Remaining: "+((currentCategs.length)-(doneQuestions.length)+1));
 }
-    
-    
-    
-    
-    
-    
+
 
 $(document).ready(function(){
-    // $("button").click(function(){
-    //     var div = $("div.button");
-    //     div.animate({height: '150px', opacity: '1'}, "500");
-    //     div.animate({width: '150px', opacity: '1'}, "500");
-    //     div.animate({height: '100px', opacity: '1'}, "500");
-    //     div.animate({width: '100px', opacity: '1'}, "500");
-    // });
 
     $("#a").click(function(){
         $("div.button").hide();
     });
 
-    // $(".button").click(function(){
-    //     $(this).html("<p class=buttonText>YOU CLICKED ME</p>");
-    // });
     $("#startButton").click(function(){
       $(this).html("Next Question");
       nextQuestion();
     });
-    
+
     $(document).on("keypress", function (e) {
         if (e.which === 113) {
             checkAnswer(answers[0], "#buttonA");
@@ -170,7 +143,7 @@ function generateRandom(min, max, i) {
     return (num === i[0]) ? generateRandom(min, max, i) : num;
 }
 
-var answered = false;    
+var answered = false;
 
 function checkAnswer(ans, id){
   console.log(ans);
@@ -178,12 +151,12 @@ function checkAnswer(ans, id){
     if (answered === true) {
         return 0;
     };
-  // console.log(id);
+
     if(ans === currentQuestion[0]){
     incrementScore(id);
     answered = true;
     stopTimer();
-    // return true;
+
   }else{
     $(id).html("<p class=buttonText>Incorrect</p>");
     stopTimer();
@@ -211,32 +184,3 @@ function resetBoard(){
   $('#buttonC').html("C");
   $('#buttonD').html("D");
 }
-
-
-
-
-// function assignAnswers (count, cat) {
-//     let n = Math.floor(Math.random() * 4); //Returns a random number between 0 and 3
-//     if (n === 0) {
-//         document.getElementById('answer_a').innerHTML = cat[count][0];
-//     } else {
-//         document.getElementById('answer_a').innerHTML = cat[Math.floor(Math.random() * cat.length)][0];
-//     }
-//     if (n === 1) {
-//         document.getElementById('answer_b').innerHTML = cat[count][0];
-//     } else {
-//         document.getElementById('answer_b').innerHTML = cat[Math.floor(Math.random() * cat.length)][0];
-//     }
-//     if (n === 2) {
-//         document.getElementById('answer_c').innerHTML = cat[count][0];
-//     } else {
-//         document.getElementById('answer_c').innerHTML = cat[Math.floor(Math.random() * cat.length)][0];
-//     }
-//     if (n === 3) {
-//         document.getElementById('answer_d').innerHTML = cat[count][0];
-//     } else {
-//         document.getElementById('answer_d').innerHTML = cat[Math.floor(Math.random() * cat.length)][0];
-//     }
-// }
-
-
