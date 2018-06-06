@@ -14,7 +14,9 @@ body {
 }
 
 .switch input {display:none;}
-
+li {
+    text-align: left;
+}
 .switch {
   position: relative;
   width: 18vw;
