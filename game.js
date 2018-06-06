@@ -116,7 +116,7 @@ $(document).ready(function(){
 
 function startTimer(){
     $("#timer").finish().css('width','200px');
-    $("#timer").animate({width:'d0px'}, time*1000, function(){
+    $("#timer").animate({width:'0px'}, time*1000, function(){
         answered = true;
         $("#correct_answer").html("Correct Answer: "+currentQuestion[0]);
         doneQuestions.splice(-1,1);
