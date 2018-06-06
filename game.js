@@ -3,7 +3,7 @@ var time = 10; //in seconds
 
 var count = 0;
 var score = 0;
-
+var answered = true;
 var categs = JSON.parse(sessionStorage.categs)
 
 
@@ -77,7 +77,10 @@ $(document).ready(function(){
 
     $("#startButton").click(function(){
       $(this).html("Next Question");
-      nextQuestion();
+        console.log(answered);
+      if(answered){
+          nextQuestion();
+      }
     });
 
     $(document).on("keypress", function (e) {
@@ -113,7 +116,7 @@ $(document).ready(function(){
 
 function startTimer(){
     $("#timer").finish().css('width','200px');
-    $("#timer").animate({width:'0px'}, time*1000, function(){
+    $("#timer").animate({width:'d0px'}, time*1000, function(){
         answered = true;
         $("#correct_answer").html("Correct Answer: "+currentQuestion[0]);
         doneQuestions.splice(-1,1);
@@ -144,7 +147,7 @@ function generateRandom(min, max, i) {
     return (num === i[0]) ? generateRandom(min, max, i) : num;
 }
 
-var answered = false;
+
 
 function checkAnswer(ans, id){
   console.log(ans);
